@@ -1,0 +1,74 @@
+
+# Executables
+*.exe
+*.out
+*.app
+*.elf
+
+# Object files
+*.o
+*.obj
+*.lo
+
+# Libraries
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+
+# Debug symbols
+*.pdb
+*.dSYM/
+
+# ==========================================
+# Build Directories
+# ==========================================
+
+build/
+bin/
+dist/
+Debug/
+Release/
+cmake-build-*/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# ==========================================
+# VS Code
+# ==========================================
+
+.vscode/
+
+# If you want to share launch/tasks/settings
+# with collaborators, remove the line above
+# and use:
+#
+# .vscode/*
+# !.vscode/settings.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
+
+# ==========================================
+# Temporary Files
+# ==========================================
+
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+
+# ==========================================
+# OS Files
+# ==========================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
