@@ -5,134 +5,170 @@
 
 int main(){
 
-// -- PROGRAMA DE PRUEBA DE PILA CON FUNCIONES QUE RETORNAN LA PILA MODIFICADA
+    printf("\nINICIO DEL PROGRAMA DE PRUEBA DE PILA\n");
 
-    printf("\nINICIO DEL PROGRAMA DE PRUEBA DE PILA CON FUNCIONES QUE RETORNAN LA PILA MODIFICADA\n");
+    // ---- pilaVacia, esPilaVacia, altura, top ----
 
-    printf("\n1. Creo una pila, la inicializo en pila vacia y muestro su altura (= 0): ");
-    Pila P;
-    P = pilaVacia();
-    printf("Altura = %d\n", altura(P));
+    printf("\n=== BLOQUE 1: pilaVacia, esPilaVacia, altura, top ===\n");
 
-    printf("\n2. Pruebo la funcion esPilaVacia. Mensaje esperado 'Pila Vacia': ");
-    if(esPilaVacia(P))
-        printf("Pila Vacia\n");
-    else
-        printf("Pila NO Vacia\n");
+    printf("\n1.  Creo una pila vacia. Mensaje esperado 'Pila Vacia': ");
+    Pila P = pilaVacia();
+    if(esPilaVacia(P)) printf("Pila Vacia\n");
+    else               printf("Pila NO Vacia\n");
 
-    printf("\n3. Escribo el valor del tope de una pila vacia (= %d): %d\n", indefinido, top(P));
+    printf("\n2.  Altura de pila vacia (= 0): %d\n", altura(P));
 
-    printf("\n4. Hago pop sobre una pila vacia y verifico que sigue vacia. Mensaje esperado 'Pila Vacia': ");
+    printf("\n3.  Top de pila vacia (= %d): %d\n", indefinido, top(P));
+
+    printf("\n4.  Pop sobre pila vacia, sigue vacia. Mensaje esperado 'Pila Vacia': ");
     P = pop(P);
-    if(esPilaVacia(P))
-        printf("Pila Vacia\n");
-    else
-        printf("Pila NO Vacia\n");
+    if(esPilaVacia(P)) printf("Pila Vacia\n");
+    else               printf("Pila NO Vacia\n");
 
-    printf("\n5. Hago push del valor 10 y muestro el tope (= 10): ");
+    // ---- push ----
+
+    printf("\n=== BLOQUE 2: push ===\n");
+
+    printf("\n5.  Push de un solo elemento (10). Top esperado (= 10): ");
     P = push(P, 10);
-    printf("Tope = %d\n", top(P));
+    printf("%d\n", top(P));
 
-    printf("\n6. Pruebo la funcion esPilaVacia. Mensaje esperado 'Pila NO Vacia': ");
-    if(esPilaVacia(P))
-        printf("Pila Vacia\n");
-    else
-        printf("Pila NO Vacia\n");
+    printf("\n6.  Altura luego de 1 push (= 1): %d\n", altura(P));
 
-    printf("\n7. Hago pop y verifico que la pila queda vacia. Mensaje esperado 'Pila Vacia': ");
-    P = pop(P);
-    if(esPilaVacia(P))
-        printf("Pila Vacia\n");
-    else
-        printf("Pila NO Vacia\n");
+    printf("\n7.  Mensaje esperado 'Pila NO Vacia': ");
+    if(esPilaVacia(P)) printf("Pila Vacia\n");
+    else               printf("Pila NO Vacia\n");
 
-    printf("\n8. Hago push de 5 valores (10, 20, 30, 40, 50) y muestro altura (= 5): ");
-    P = push(P, 10);
+    printf("\n8.  Push de 4 valores mas (20,30,40,50). Altura esperada (= 5), Top esperado (= 50):\n");
     P = push(P, 20);
     P = push(P, 30);
     P = push(P, 40);
     P = push(P, 50);
-    printf("Altura = %d\n", altura(P));
+    printf("     Altura = %d | Top = %d\n", altura(P), top(P));
 
-    printf("\n9. Escribo el valor del tope (= 50): %d\n", top(P));
+    // ---- pop ----
 
-    printf("\n10. Hago pop y muestro el nuevo tope (= 40): ");
+    printf("\n=== BLOQUE 3: pop ===\n");
+
+    printf("\n9.  Pop una vez. Top esperado (= 40), Altura esperada (= 4): ");
     P = pop(P);
-    printf("Tope = %d, Altura = %d\n", top(P), altura(P));
+    printf("Top = %d | Altura = %d\n", top(P), altura(P));
 
-    printf("\n11. Creo una segunda pila P2 y le hago push de 3 valores (100, 200, 300).\n");
-    Pila P2;
-    P2 = pilaVacia();
-    P2 = push(P2, 100);
-    P2 = push(P2, 200);
-    P2 = push(P2, 300);
-    printf("     Tope de P2 (= 300): %d, Altura de P2 (= 3): %d\n", top(P2), altura(P2));
+    printf("\n10. Pop hasta vaciar la pila. Mensaje esperado 'Pila Vacia': ");
+    P = pop(P);
+    P = pop(P);
+    P = pop(P);
+    P = pop(P);
+    if(esPilaVacia(P)) printf("Pila Vacia\n");
+    else               printf("Pila NO Vacia\n");
 
-    printf("\n12. Pruebo igualP con P y P2. Mensaje esperado 'NO Son Iguales': ");
-    if(igualP(P, P2))
-        printf("Son Iguales\n");
-    else
-        printf("NO Son Iguales\n");
+    printf("\n11. Pop sobre pila recien vaciada. Mensaje esperado 'Pila Vacia': ");
+    P = pop(P);
+    if(esPilaVacia(P)) printf("Pila Vacia\n");
+    else               printf("Pila NO Vacia\n");
 
-    printf("\n13. Creo una tercera pila P3 igual a P (push de 10,20,30,40) y pruebo igualP(P, P3). Mensaje esperado 'Son Iguales': ");
-    Pila P3;
-    P3 = pilaVacia();
-    P3 = push(P3, 10);
-    P3 = push(P3, 20);
-    P3 = push(P3, 30);
-    P3 = push(P3, 40);
-    if(igualP(P, P3))
-        printf("Son Iguales\n");
-    else
-        printf("NO Son Iguales\n");
+    // ---- igualP ----
 
-    printf("\n14. Apilo P2 encima de P3 con apila(P3, P2). Altura esperada (= 7), Tope esperado (= 300):\n");
-    printf("     Altura P3 (= 4): %d | Altura P2 (= 3): %d\n", altura(P3), altura(P2));
-    Pila P4 = apila(P3, P2);
-    printf("     Altura de P4 (= 7): %d\n", altura(P4));
-    printf("     Tope de P4 (= 300): %d\n", top(P4));
-    printf("     P2 queda vacia luego de apilar. Mensaje esperado 'Pila Vacia': ");
-    if(esPilaVacia(P2))
-        printf("Pila Vacia\n");
-    else
-        printf("Pila NO Vacia\n");
+    printf("\n=== BLOQUE 4: igualP ===\n");
 
-    printf("\n15. Recargo P2 con (100, 200, 300) y pruebo apila(vacia, P2). Altura esperada (= 3): ");
-    P2 = push(P2, 100);
-    P2 = push(P2, 200);
-    P2 = push(P2, 300);
-    Pila vacia = pilaVacia();
-    Pila P5 = apila(vacia, P2);
-    printf("%d\n", altura(P5));
-    printf("     P2 queda vacia luego de apilar. Mensaje esperado 'Pila Vacia': ");
-    if(esPilaVacia(P2))
-        printf("Pila Vacia\n");
-    else
-        printf("Pila NO Vacia\n");
+    printf("\n12. igualP de dos pilas vacias. Mensaje esperado 'Son Iguales': ");
+    Pila PA = pilaVacia();
+    Pila PB = pilaVacia();
+    if(igualP(PA, PB)) printf("Son Iguales\n");
+    else               printf("NO Son Iguales\n");
 
-    printf("\n16. Pruebo apila(P, pilaVacia()). Altura esperada (= 4): ");
-    Pila vacia2 = pilaVacia();
-    Pila P6 = apila(P, vacia2);
-    printf("%d\n", altura(P6));
+    printf("\n13. igualP(vacia, noVacia). Mensaje esperado 'NO Son Iguales': ");
+    PB = push(PB, 1);
+    if(igualP(PA, PB)) printf("Son Iguales\n");
+    else               printf("NO Son Iguales\n");
 
-    printf("\n17. Pruebo apila(pilaVacia(), pilaVacia()). Mensaje esperado 'Pila Vacia': ");
-    Pila vacia3 = pilaVacia();
-    Pila vacia4 = pilaVacia();
-    Pila P7 = apila(vacia3, vacia4);
-    if(esPilaVacia(P7))
-        printf("Pila Vacia\n");
-    else
-        printf("Pila NO Vacia\n");
+    printf("\n14. igualP(noVacia, vacia). Mensaje esperado 'NO Son Iguales': ");
+    if(igualP(PB, PA)) printf("Son Iguales\n");
+    else               printf("NO Son Iguales\n");
 
-    printf("\n18. Libero la memoria de todas las pilas\n");
-    while(!esPilaVacia(P))   P  = pop(P);
-    // P2 ya fue vaciada por apila en test 15
-    while(!esPilaVacia(P3))  P3 = pop(P3);
-    while(!esPilaVacia(P4))  P4 = pop(P4);
-    while(!esPilaVacia(P5))  P5 = pop(P5);
-    while(!esPilaVacia(P6))  P6 = pop(P6);
+    printf("\n15. igualP de dos pilas identicas (10,20,30). Mensaje esperado 'Son Iguales': ");
+    PA = push(PA, 10);
+    PA = push(PA, 20);
+    PA = push(PA, 30);
+    PB = pilaVacia();
+    PB = push(PB, 10);
+    PB = push(PB, 20);
+    PB = push(PB, 30);
+    if(igualP(PA, PB)) printf("Son Iguales\n");
+    else               printf("NO Son Iguales\n");
 
-    printf("\nFIN DEL PROGRAMA DE PRUEBA DE PILA CON FUNCIONES QUE RETORNAN LA PILA MODIFICADA\n");
+    printf("\n16. igualP de pilas con mismo tamanio pero tope distinto. Mensaje esperado 'NO Son Iguales': ");
+    Pila PC = pilaVacia();
+    PC = push(PC, 10);
+    PC = push(PC, 20);
+    PC = push(PC, 99);
+    if(igualP(PA, PC)) printf("Son Iguales\n");
+    else               printf("NO Son Iguales\n");
+
+    printf("\n17. igualP de pilas con distinto tamanio. Mensaje esperado 'NO Son Iguales': ");
+    Pila PD = pilaVacia();
+    PD = push(PD, 10);
+    PD = push(PD, 20);
+    if(igualP(PA, PD)) printf("Son Iguales\n");
+    else               printf("NO Son Iguales\n");
+
+    printf("\n18. PA y PB NO fueron modificadas por igualP. Alturas esperadas (= 3):\n");
+    printf("     Altura PA (= 3): %d | Top PA (= 30): %d\n", altura(PA), top(PA));
+    printf("     Altura PB (= 3): %d | Top PB (= 30): %d\n", altura(PB), top(PB));
+
+    // ---- apila ----
+
+    printf("\n=== BLOQUE 5: apila ===\n");
+
+    printf("\n19. apila(pilaVacia, pilaVacia). Mensaje esperado 'Pila Vacia': ");
+    Pila V1 = pilaVacia();
+    Pila V2 = pilaVacia();
+    Pila R = apila(V1, V2);
+    if(esPilaVacia(R)) printf("Pila Vacia\n");
+    else               printf("Pila NO Vacia\n");
+
+    printf("\n20. apila(PA, pilaVacia). Altura esperada (= 3), Top esperado (= 30): ");
+    Pila V3 = pilaVacia();
+    R = apila(PA, V3);
+    printf("Altura = %d | Top = %d\n", altura(R), top(R));
+    printf("     PA NO fue modificada. Altura esperada (= 3): %d | Top esperado (= 30): %d\n", altura(PA), top(PA));
+
+    printf("\n21. apila(pilaVacia, PB). Altura esperada (= 3), Top esperado (= 30): ");
+    Pila V4 = pilaVacia();
+    R = apila(V4, PB);
+    printf("Altura = %d | Top = %d\n", altura(R), top(R));
+    printf("     PB NO fue modificada. Altura esperada (= 3): %d | Top esperado (= 30): %d\n", altura(PB), top(PB));
+
+    printf("\n22. apila(PA, PB): apilo PB encima de PA. Altura esperada (= 6), Top esperado (= 30):\n");
+    R = apila(PA, PB);
+    printf("     Altura R (= 6): %d | Top R (= 30): %d\n", altura(R), top(R));
+    printf("     PA NO fue modificada. Altura esperada (= 3): %d | Top esperado (= 30): %d\n", altura(PA), top(PA));
+    printf("     PB NO fue modificada. Altura esperada (= 3): %d | Top esperado (= 30): %d\n", altura(PB), top(PB));
+
+    printf("\n23. apila con pilas de distinto contenido. PA=(10,20,30), PE=(100,200).\n");
+    printf("     Altura esperada (= 5), Top esperado (= 30):\n");
+    Pila PE = pilaVacia();
+    PE = push(PE, 100);
+    PE = push(PE, 200);
+    R = apila(PE, PA);
+    printf("     Altura R (= 5): %d | Top R (= 30): %d\n", altura(R), top(R));
+    printf("     PE NO fue modificada. Altura esperada (= 2): %d | Top esperado (= 200): %d\n", altura(PE), top(PE));
+    printf("     PA NO fue modificada. Altura esperada (= 3): %d | Top esperado (= 30): %d\n", altura(PA), top(PA));
+
+    // ---- liberacion ----
+
+    printf("\n=== BLOQUE 6: liberacion de memoria ===\n");
+    printf("\n24. Libero todas las pilas\n");
+    while(!esPilaVacia(P))  P  = pop(P);
+    while(!esPilaVacia(PA)) PA = pop(PA);
+    while(!esPilaVacia(PB)) PB = pop(PB);
+    while(!esPilaVacia(PC)) PC = pop(PC);
+    while(!esPilaVacia(PD)) PD = pop(PD);
+    while(!esPilaVacia(PE)) PE = pop(PE);
+    while(!esPilaVacia(R))  R  = pop(R);
+    printf("     Memoria liberada correctamente\n");
+
+    printf("\nFIN DEL PROGRAMA DE PRUEBA DE PILA\n");
 
     return 0;
 }

@@ -24,7 +24,7 @@ Pila pop(Pila pila);
 item top(Pila pila);
 int altura(Pila pila);
 bool igualP(Pila pilaA, Pila pilaB);
-Pila apila(Pila pilaA, Pila *pilaB);
+Pila apila(Pila pilaA, Pila pilaB);
 
 Pila pilaVacia(){
     Pila nuevaPila;
@@ -88,8 +88,13 @@ bool igualP(Pila pilaA, Pila pilaB){
     if(esPilaVacia(pilaA) || esPilaVacia(pilaB)){
         return false;
     }
-
-    return (top(pilaA) == top(pilaB)) && igualP(pop(pilaA), pop(pilaB));
+    int topeA = top(pilaA);
+    pilaA.tope = pilaA.tope->siguiente;
+    pilaA.altura--;
+    int topeB = top(pilaB);
+    pilaB.tope = pilaB.tope->siguiente;
+    pilaB.altura--;
+    return ((topeA == topeB) && igualP(pilaA, pilaB));
 }
 
 Pila apila(Pila pilaA, Pila pilaB){
@@ -103,6 +108,7 @@ Pila apila(Pila pilaA, Pila pilaB){
         return pilaA;
     }
     int topPilaB = top(pilaB);
-    pilaB = pop(pilaB);
+    pilaB.tope = pilaB.tope->siguiente;
+    pilaB.altura--;
     return push(apila(pilaA, pilaB), topPilaB);
 }
