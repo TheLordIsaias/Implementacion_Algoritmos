@@ -103,6 +103,9 @@ int main (){
     ordenSimetrico(ab3);
     printf(">");
 
+    printf("\nLiberando memoria...");
+    liberarAB(ab3);
+    liberarAB(ab4);
     getchar();
 
     return 0;

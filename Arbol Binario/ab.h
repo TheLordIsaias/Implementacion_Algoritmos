@@ -145,3 +145,11 @@ AB podarHojas(AB T){
         }
     }
 }
+
+void liberarAB(AB T){
+    if(T != NULL){
+        liberarAB(izquierdo(T));
+        liberarAB(derecho(T));
+        free(T);
+    }
+}
