@@ -64,14 +64,12 @@ bool pertenece(AB T, itemAB x){
     }
 }
 
-void ordenSimetrico(AB T){
-    printf("<");
+void ordenSimetrico(AB T){ 
     if(!esABVacio(T)){
         ordenSimetrico(izquierdo(T));
         printf(" %c ", raiz(T));
         ordenSimetrico(derecho(T));
     }
-    printf(">");
 }
 
 bool esArbolHoja(AB T){
@@ -107,7 +105,7 @@ int cuenta(AB T, itemAB x){
 }
 
 int altura(AB T){
-    if(esABVacio(T)){
+    if(esArbolHoja(T)){
         return 0;
     } else {
         int altIzq = altura(izquierdo(T));
